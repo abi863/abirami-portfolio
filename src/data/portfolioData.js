@@ -190,12 +190,49 @@ export const projectsData = [
 export const internshipData = {
   company: "Trios Technology Pvt. Ltd.",
   domain: "Web Development",
+  role: "Web Development Intern",
   duration: "1 Month",
   projectWork: "Online Shopping Website",
   technologiesUsed: ["HTML", "CSS", "JavaScript", "Java", "MySQL"],
   certificateAvailable: true,
-  description: "Completed a one-month Web Development internship during which I worked on an Online Shopping Website using HTML, CSS, JavaScript, Java, and MySQL."
+  description: "Completed a one-month Web Development internship during which I worked on an Online Shopping Website using HTML, CSS, JavaScript, Java, and MySQL.",
+  projectDescription: "Contributed to frontend interface design, responsive catalogs, and backend data operations using Java and MySQL."
 };
+
+export const internshipsData = [
+  internshipData,
+  {
+    company: "Infosys",
+    domain: "Java",
+    role: "Java Intern",
+    duration: "1 Month",
+    mode: "Online",
+    projectWork: "MediSphere Cognitive Twin",
+    technologiesUsed: [
+      "Angular",
+      "HTML",
+      "CSS",
+      "TypeScript",
+      "Java",
+      "Spring Boot",
+      "MongoDB Atlas",
+      "REST APIs",
+      "Python",
+      "Machine Learning",
+      "SHAP (Explainable AI)",
+      "Federated Learning"
+    ],
+    certificateAvailable: true,
+    certificatePreviewPlaceholder: true,
+    featured: true,
+    description: "Developed an interactive healthcare dashboard using Angular, HTML, CSS, and TypeScript, with Spring Boot and Java backend services and REST APIs connected to MongoDB Atlas.",
+    projectDescription: [
+      "Connected the dashboard to MongoDB Atlas to store and retrieve patient details, medical records, vital signs, and alerts. Integrated patient information for Patient 360 views, real-time monitoring, and clinical alerts.",
+      "For Milestone 2, designed an AI Risk Prediction interface featuring cardiovascular and diabetes risk, clinical risk factors, SHAP-based explainability visualization, and a Federated Learning architecture concept.",
+      "The platform brings patient monitoring, AI-based risk assessment, and explainable healthcare information together in one place."
+    ]
+  }
+];
 
 export const certificationsData = [
   { id: 1, title: "Digital Skills: Artificial Intelligence", category: "AI & Emerging Tech" },
