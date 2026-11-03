@@ -41,7 +41,7 @@ export default function Skills() {
     : skillCategories.filter((c) => c.category === selectedCategory);
 
   return (
-    <section id="skills" className="relative py-24 bg-[#07060f]/80 border-t border-purple-500/15">
+    <section id="skills" className="relative py-12 sm:py-16 lg:py-24 bg-[#07060f]/80 border-t border-purple-500/15">
       <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

@@ -4,7 +4,7 @@ import { personalData, educationData } from '../data/portfolioData';
 
 export default function About({ onOpenResume }) {
   return (
-    <section id="about" className="relative py-24 bg-[#07060f]/60 border-t border-purple-500/15">
+    <section id="about" className="relative py-12 sm:py-16 lg:py-24 bg-[#07060f]/60 border-t border-purple-500/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/30 text-xs font-mono text-purple-300 mb-3">

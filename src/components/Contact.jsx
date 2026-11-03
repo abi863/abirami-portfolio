@@ -104,7 +104,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-24 bg-[#050508] border-t border-purple-500/15">
+    <section id="contact" className="relative py-12 sm:py-16 lg:py-24 bg-[#050508] border-t border-purple-500/15">
       <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
 
@@ -196,43 +196,43 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="p-7 rounded-2xl bg-[#0c0a1e] border border-purple-500/30 backdrop-blur-xl shadow-xl">
+            <div className="p-4 sm:p-7 rounded-2xl bg-[#0c0a1e] border border-purple-500/30 backdrop-blur-xl shadow-xl">
               <h4 className="text-xs font-mono uppercase tracking-wider text-purple-300 mb-4 font-semibold">
                 Professional & Social Profiles
               </h4>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="grid grid-cols-3 gap-2 sm:gap-3">
                 <a
                   href={personalData.socials.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center justify-center p-3.5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-cyan-400/50 hover:bg-white/[0.06] text-gray-300 hover:text-white transition-all group"
+                  className="flex min-w-0 w-full flex-col items-center justify-center p-2 sm:p-3.5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-cyan-400/50 hover:bg-white/[0.06] text-gray-300 hover:text-white transition-all group"
                 >
                   <GithubIcon className="w-6 h-6 text-gray-400 group-hover:text-cyan-300 transition-colors mb-1.5" />
                   <span className="text-xs font-semibold">GitHub</span>
-                  <span className="text-[10px] font-mono text-gray-500">@abi863</span>
+                  <span className="w-full break-words text-center text-[10px] font-mono text-gray-500">@abi863</span>
                 </a>
 
                 <a
                   href={personalData.socials.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center justify-center p-3.5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-purple-400/50 hover:bg-white/[0.06] text-gray-300 hover:text-white transition-all group"
+                  className="flex min-w-0 w-full flex-col items-center justify-center p-2 sm:p-3.5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-purple-400/50 hover:bg-white/[0.06] text-gray-300 hover:text-white transition-all group"
                 >
                   <LinkedinIcon className="w-6 h-6 text-purple-400 group-hover:text-purple-300 transition-colors mb-1.5" />
-                  <span className="text-xs font-semibold">LinkedIn</span>
-                  <span className="text-[10px] font-mono text-gray-500">Abirami R V</span>
+                  <span className="text-center text-xs font-semibold">LinkedIn</span>
+                  <span className="w-full break-words text-center text-[10px] font-mono text-gray-500">Abirami R V</span>
                 </a>
 
                 <a
                   href={personalData.socials.leetcode}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center justify-center p-3.5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-yellow-400/50 hover:bg-white/[0.06] text-gray-300 hover:text-white transition-all group"
+                  className="flex min-w-0 w-full flex-col items-center justify-center p-2 sm:p-3.5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-yellow-400/50 hover:bg-white/[0.06] text-gray-300 hover:text-white transition-all group"
                 >
                   <LeetcodeIcon className="w-6 h-6 text-yellow-400 group-hover:text-yellow-300 transition-colors mb-1.5" />
-                  <span className="text-xs font-semibold">LeetCode</span>
-                  <span className="text-[10px] font-mono text-gray-500">@abi_512</span>
+                  <span className="text-center text-xs font-semibold">LeetCode</span>
+                  <span className="w-full break-words text-center text-[10px] font-mono text-gray-500">@abi_512</span>
                 </a>
               </div>
             </div>

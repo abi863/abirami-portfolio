@@ -4,7 +4,7 @@ import { educationData } from '../data/portfolioData';
 
 export default function Education() {
   return (
-    <section id="education" className="relative py-24 bg-[#050508] border-t border-purple-500/15">
+    <section id="education" className="relative py-12 sm:py-16 lg:py-24 bg-[#050508] border-t border-purple-500/15">
       <div className="absolute top-1/2 left-0 w-80 h-80 bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
 

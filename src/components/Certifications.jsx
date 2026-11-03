@@ -38,7 +38,7 @@ export default function Certifications() {
   });
 
   return (
-    <section id="certifications" className="relative py-24 bg-[#050508] border-t border-purple-500/15">
+    <section id="certifications" className="relative py-12 sm:py-16 lg:py-24 bg-[#050508] border-t border-purple-500/15">
       <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

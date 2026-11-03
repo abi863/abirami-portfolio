@@ -67,12 +67,22 @@ export default function Navbar({ onOpenResume }) {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-start gap-3 xl:justify-between xl:gap-0">
+          {/* Mobile Hamburger Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={mobileMenuOpen}
+            className="order-1 shrink-0 p-2 rounded-xl bg-[#121124] border border-purple-500/30 text-gray-200 hover:text-cyan-300 hover:border-cyan-400/50 transition-colors xl:hidden"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+
           {/* Brand Logo */}
           <a
             href="#home"
             onClick={(e) => scrollToSection(e, '#home')}
-            className="group flex items-center gap-3 cursor-pointer"
+            className="group order-2 flex min-w-0 items-center gap-3 cursor-pointer xl:order-1"
             aria-label="Abirami R V Portfolio Homepage"
           >
             <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 via-indigo-600 to-cyan-400 p-[1.5px] transition-transform duration-300 group-hover:scale-105 shadow-[0_0_15px_rgba(139,92,246,0.5)]">
@@ -93,7 +103,7 @@ export default function Navbar({ onOpenResume }) {
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden xl:flex items-center gap-1 bg-[#121124]/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-purple-500/20 shadow-inner">
+          <nav className="order-3 hidden xl:flex items-center gap-1 bg-[#121124]/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-purple-500/20 shadow-inner">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.substring(1);
               return (
@@ -116,26 +126,13 @@ export default function Navbar({ onOpenResume }) {
             })}
           </nav>
 
-          {/* Right Action: Download Resume & Mobile Trigger */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={onOpenResume}
-              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-xl bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 text-white shadow-[0_0_15px_rgba(139,92,246,0.35)] hover:shadow-[0_0_25px_rgba(0,240,255,0.45)] hover:brightness-110 active:scale-95 transition-all duration-200 cursor-pointer"
-            >
-              <FileText className="w-3.5 h-3.5" />
-              <span>View Resume</span>
-            </button>
-
-            {/* Mobile Hamburger Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle navigation menu"
-              aria-expanded={mobileMenuOpen}
-              className="xl:hidden p-2 rounded-xl bg-[#121124] border border-purple-500/30 text-gray-200 hover:text-cyan-300 hover:border-cyan-400/50 transition-colors"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
+          <button
+            onClick={onOpenResume}
+            className="order-4 ml-auto hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-xl bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 text-white shadow-[0_0_15px_rgba(139,92,246,0.35)] hover:shadow-[0_0_25px_rgba(0,240,255,0.45)] hover:brightness-110 active:scale-95 transition-all duration-200 cursor-pointer xl:ml-0"
+          >
+            <FileText className="w-3.5 h-3.5" />
+            <span>View Resume</span>
+          </button>
         </div>
       </div>
 

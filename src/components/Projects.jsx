@@ -33,7 +33,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="relative py-24 bg-[#050508] border-t border-purple-500/15">
+    <section id="projects" className="relative py-12 sm:py-16 lg:py-24 bg-[#050508] border-t border-purple-500/15">
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
 

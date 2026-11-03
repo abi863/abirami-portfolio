@@ -19,7 +19,7 @@ export default function Hero({ onOpenResume }) {
   };
 
   return (
-    <section id="home" className="relative min-h-screen pt-28 pb-16 flex flex-col justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen pt-28 pb-10 sm:pb-16 flex flex-col justify-center overflow-hidden">
       {/* Background Cyber Grid */}
       <div className="absolute inset-0 cyber-grid pointer-events-none opacity-40" />
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/15 rounded-full blur-[140px] pointer-events-none" />

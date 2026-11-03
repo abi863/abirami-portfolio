@@ -4,7 +4,7 @@ import { internshipsData } from '../data/portfolioData';
 
 export default function Internship() {
   return (
-    <section id="internship" className="relative py-24 bg-[#07060f]/60 border-t border-purple-500/15">
+    <section id="internship" className="relative py-12 sm:py-16 lg:py-24 bg-[#07060f]/60 border-t border-purple-500/15">
       <div className="absolute top-1/2 right-1/4 w-80 h-80 bg-purple-600/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
