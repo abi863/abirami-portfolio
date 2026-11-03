@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowDown, FileText, MapPin, Mail, Phone } from 'lucide-react';
-import LaptopScene from './LaptopScene';
+import HeroCharacterScene from './LaptopScene';
 import { personalData } from '../data/portfolioData';
 
 export default function Hero({ onOpenResume }) {
@@ -126,7 +126,7 @@ export default function Hero({ onOpenResume }) {
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-heading font-semibold text-sm text-gray-200 bg-[#121024] border border-purple-500/40 hover:border-cyan-400/70 hover:text-cyan-300 hover:shadow-[0_0_20px_rgba(0,240,255,0.25)] active:scale-95 transition-all duration-200 cursor-pointer"
               >
                 <FileText className="w-4 h-4 text-cyan-400" />
-                <span>Download Resume</span>
+                <span>View Resume</span>
               </button>
             </div>
 
@@ -141,10 +141,10 @@ export default function Hero({ onOpenResume }) {
             </div>
           </div>
 
-          {/* Right Column: 3D Laptop */}
+          {/* Right Column: 3D Character */}
           <div className="lg:col-span-6 relative flex flex-col items-center justify-center">
             <div className="w-full relative">
-              <LaptopScene />
+              <HeroCharacterScene />
             </div>
           </div>
         </div>

@@ -123,7 +123,7 @@ export default function Navbar({ onOpenResume }) {
               className="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-xl bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 text-white shadow-[0_0_15px_rgba(139,92,246,0.35)] hover:shadow-[0_0_25px_rgba(0,240,255,0.45)] hover:brightness-110 active:scale-95 transition-all duration-200 cursor-pointer"
             >
               <FileText className="w-3.5 h-3.5" />
-              <span>Resume</span>
+              <span>View Resume</span>
             </button>
 
             {/* Mobile Hamburger Button */}
@@ -177,7 +177,7 @@ export default function Navbar({ onOpenResume }) {
             className="w-full flex items-center justify-center gap-2 px-4 py-3 text-xs font-semibold rounded-xl bg-gradient-to-r from-purple-600 to-cyan-500 text-white shadow-lg shadow-purple-600/30 active:scale-95 transition-all cursor-pointer"
           >
             <FileText className="w-4 h-4" />
-            <span>Download Resume PDF</span>
+            <span>View Resume</span>
           </button>
         </div>
       </div>

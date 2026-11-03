@@ -1,173 +1,101 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  FileText, 
-  Download, 
-  X, 
-  AlertCircle, 
-  CheckCircle2, 
-  GraduationCap, 
-  Briefcase, 
-  Code2, 
-  Mail 
-} from 'lucide-react';
+import React, { useEffect } from 'react';
+import { Download, ExternalLink, FileText, X } from 'lucide-react';
 import { personalData } from '../data/portfolioData';
 
+const resumeUrl = '/resume.pdf';
+
 export default function ResumeModal({ isOpen, onClose }) {
-  const [fileExists, setFileExists] = useState(false);
-
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen) return undefined;
 
-    const checkFile = async () => {
-      try {
-        const response = await fetch('/resume.pdf', { method: 'HEAD' });
-        if (response.ok && response.headers.get('content-type')?.includes('pdf')) {
-          setFileExists(true);
-        } else {
-          setFileExists(false);
-        }
-      } catch {
-        setFileExists(false);
-      }
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') onClose();
     };
 
-    checkFile();
-
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') onClose();
-    };
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
-  const handleDownload = () => {
-    if (fileExists) {
-      const link = document.createElement('a');
-      link.href = '/resume.pdf';
-      link.download = 'Abirami_R_V_Resume.pdf';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-  };
-
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md animate-fade-in">
-      <div className="relative w-full max-w-2xl rounded-2xl bg-[#0d0c1e] border border-purple-500/40 p-6 sm:p-8 shadow-[0_0_50px_rgba(139,92,246,0.3)] max-h-[90vh] overflow-y-auto">
-        <button
-          onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-cyan-400 transition-colors cursor-pointer"
-          aria-label="Close resume modal"
-        >
-          <X className="w-5 h-5" />
-        </button>
-
-        <div className="flex items-center gap-3 mb-6 pr-10">
-          <div className="p-3 rounded-2xl bg-gradient-to-br from-purple-600/20 to-cyan-500/20 text-cyan-400 border border-purple-500/30">
-            <FileText className="w-6 h-6" />
-          </div>
-          <div>
-            <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-              Curriculum Vitae / Resume
-            </h3>
-            <p className="text-xs font-mono text-purple-400">
-              {personalData.name} • {personalData.role}
-            </p>
-          </div>
-        </div>
-
-        {fileExists ? (
-          <div className="mb-6 p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/40 text-emerald-200 flex items-center justify-between gap-4">
-            <div className="flex items-center gap-2.5 text-xs">
-              <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-              <span>Official resume PDF is ready for direct download.</span>
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-0 backdrop-blur-md sm:p-5"
+      onClick={onClose}
+    >
+      <section
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="resume-dialog-title"
+        className="flex h-[100dvh] max-h-[100dvh] w-full flex-col overflow-hidden bg-[#0d0c1e] sm:h-[90vh] sm:max-h-[900px] sm:max-w-6xl sm:rounded-2xl sm:border sm:border-purple-500/40 sm:shadow-[0_0_50px_rgba(139,92,246,0.3)]"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <header className="flex shrink-0 items-center justify-between gap-4 border-b border-purple-500/20 bg-[#0d0c1e] px-4 py-3 sm:px-6 sm:py-4">
+          <div className="flex min-w-0 items-center gap-3">
+            <div className="hidden rounded-xl border border-purple-500/30 bg-gradient-to-br from-purple-600/20 to-cyan-500/20 p-2 text-cyan-400 sm:block">
+              <FileText className="h-5 w-5" />
             </div>
-            <button
-              onClick={handleDownload}
-              className="px-4 py-2 rounded-lg text-xs font-bold bg-emerald-500 text-black hover:bg-emerald-400 transition-colors shrink-0 cursor-pointer"
-            >
-              Download PDF
-            </button>
-          </div>
-        ) : (
-          <div className="mb-6 p-4 rounded-xl bg-purple-950/40 border border-purple-500/40 text-purple-200 flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
-            <div className="text-xs leading-relaxed">
-              <p className="font-semibold text-white">Resume File Standby Notice:</p>
-              <p className="text-gray-300 mt-1">
-                The actual PDF document will be added separately. To attach your resume PDF, simply place your file at <code className="text-cyan-300 bg-black/50 px-1.5 py-0.5 rounded font-mono">/public/resume.pdf</code>.
+            <div className="min-w-0">
+              <h2 id="resume-dialog-title" className="truncate text-base font-bold tracking-tight text-white sm:text-lg">
+                Resume Preview
+              </h2>
+              <p className="truncate text-xs text-gray-400">
+                {personalData.name} · {personalData.role}
               </p>
             </div>
           </div>
-        )}
 
-        <div className="space-y-4">
-          <h4 className="text-xs font-mono uppercase tracking-wider text-cyan-300 font-semibold">
-            Verified Profile Summary
-          </h4>
-
-          <div className="p-4 rounded-xl bg-[#141228] border border-purple-500/20 text-xs space-y-2">
-            <div className="flex items-center gap-2 text-white font-semibold">
-              <GraduationCap className="w-4 h-4 text-purple-400" />
-              <span>B.Tech Computer Science and Business Systems</span>
-            </div>
-            <p className="text-gray-300">
-              Ramco Institute of Technology (2024–2028) • CGPA: <span className="text-cyan-300 font-bold">6.97</span>
-            </p>
-          </div>
-
-          <div className="p-4 rounded-xl bg-[#141228] border border-purple-500/20 text-xs space-y-2">
-            <div className="flex items-center gap-2 text-white font-semibold">
-              <Code2 className="w-4 h-4 text-cyan-400" />
-              <span>Featured Engineering Projects</span>
-            </div>
-            <ul className="text-gray-300 space-y-1 list-disc list-inside">
-              <li><strong className="text-white">LIFEConnect:</strong> Blood Bank Management System (Java 21, Spring Boot, MySQL)</li>
-              <li><strong className="text-white">Smart Bus Stop:</strong> Real-time IoT Transit Information System (ESP32, OLED, WebServer)</li>
-              <li><strong className="text-white">Online Shopping Website:</strong> Internship Full Stack Application</li>
-            </ul>
-          </div>
-
-          <div className="p-4 rounded-xl bg-[#141228] border border-purple-500/20 text-xs space-y-1">
-            <div className="flex items-center gap-2 text-white font-semibold">
-              <Briefcase className="w-4 h-4 text-emerald-400" />
-              <span>Web Development Internship — Trios Technology Pvt. Ltd. (1 Month)</span>
-            </div>
-            <p className="text-gray-400">
-              Certificate Available • Technologies: HTML, CSS, JavaScript, Java, MySQL
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-8 pt-5 border-t border-purple-500/20 flex flex-wrap items-center justify-between gap-4">
-          <a
-            href={`mailto:${personalData.email}?subject=Resume Request - Abirami R V&body=Hello Abirami,%0D%0A%0D%0AI reviewed your portfolio and would like to request a copy of your latest resume.%0D%0A%0D%0ABest regards,`}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono bg-white/[0.05] border border-white/10 hover:border-cyan-400 text-gray-300 hover:text-white transition-colors"
-          >
-            <Mail className="w-4 h-4 text-cyan-400" />
-            <span>Request via Email</span>
-          </a>
-
-          {fileExists ? (
-            <button
-              onClick={handleDownload}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-r from-purple-600 to-cyan-500 text-white shadow-lg hover:brightness-110 transition-all cursor-pointer"
+          <div className="flex shrink-0 items-center gap-2">
+            <a
+              href={resumeUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open PDF in a new tab"
+              className="inline-flex items-center gap-2 rounded-lg border border-cyan-400/30 bg-cyan-400/10 px-3 py-2 text-xs font-semibold text-cyan-200 transition-colors hover:border-cyan-300 hover:bg-cyan-400/20"
             >
-              <Download className="w-4 h-4" />
-              <span>Download PDF</span>
-            </button>
-          ) : (
+              <ExternalLink className="h-4 w-4" />
+              <span className="hidden sm:inline">Open PDF</span>
+              <span className="sm:hidden">Open</span>
+            </a>
+            <a
+              href={resumeUrl}
+              download="resume.pdf"
+              aria-label="Download Resume"
+              className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-purple-600 to-cyan-500 px-3 py-2 text-xs font-bold text-white shadow-lg transition-all hover:brightness-110 sm:px-4"
+            >
+              <Download className="h-4 w-4" />
+              <span className="hidden sm:inline">Download Resume</span>
+              <span className="sm:hidden">Download</span>
+            </a>
             <button
+              type="button"
               onClick={onClose}
-              className="px-6 py-2.5 rounded-xl text-xs font-semibold bg-purple-900/40 border border-purple-500/40 text-purple-200 hover:bg-purple-800/40 transition-colors cursor-pointer"
+              aria-label="Close resume preview"
+              className="rounded-lg border border-white/10 bg-white/5 p-2 text-gray-300 transition-colors hover:border-cyan-400/50 hover:text-white"
             >
-              Close
+              <X className="h-4 w-4" />
             </button>
-          )}
+          </div>
+        </header>
+
+        <div className="min-h-0 flex-1 bg-[#080811]">
+          <iframe
+            src={`${resumeUrl}#toolbar=1&navpanes=0&view=FitH`}
+            title={`${personalData.name} resume PDF`}
+            className="h-full w-full border-0"
+          />
         </div>
-      </div>
+
+        <footer className="shrink-0 border-t border-purple-500/20 bg-[#0d0c1e] px-4 py-2 text-center text-[11px] text-gray-500 sm:px-6">
+          Use the PDF viewer controls to scroll and zoom. If the preview is unavailable, choose Open PDF.
+        </footer>
+      </section>
     </div>
   );
 }
