@@ -102,7 +102,10 @@ function FloatingTechBadge({ position, label, color, iconSymbol, speed = 1, dela
 
 function Scene({ characterTexture }) {
   const { viewport } = useThree();
-  const sidePosition = Math.min(2.3, viewport.width * 0.4);
+  const sidePosition = Math.max(0, Math.min(1.8, viewport.width * 0.27, viewport.width / 2 - 0.72));
+  const upperPosition = Math.min(1.55, viewport.height * 0.36);
+  const lowerPosition = -Math.min(0.9, viewport.height * 0.22);
+  const bottomPosition = -Math.min(1.4, viewport.height * 0.33);
 
   return (
     <>
@@ -114,13 +117,13 @@ function Scene({ characterTexture }) {
       <Stars radius={40} depth={20} count={600} factor={3} saturation={1} fade speed={1.2} />
       {characterTexture && <CharacterImage texture={characterTexture} />}
 
-      <FloatingTechBadge position={[-sidePosition, 1.35, 0.4]} label="Java 21" color="#f97316" iconSymbol="☕" speed={1.1} delay={0.2} />
-      <FloatingTechBadge position={[sidePosition, 1.25, 0.3]} label="React" color="#00f0ff" iconSymbol="⚛" speed={0.9} delay={1.4} />
-      <FloatingTechBadge position={[-sidePosition, -0.9, 0.8]} label="Spring" color="#22c55e" iconSymbol="🌱" speed={1.2} delay={2.1} />
-      <FloatingTechBadge position={[sidePosition, -0.9, 0.7]} label="MySQL" color="#38bdf8" iconSymbol="🐬" speed={1.0} delay={0.8} />
-      <FloatingTechBadge position={[-sidePosition * 0.72, 2, -0.5]} label="JS / TS" color="#eab308" iconSymbol="⚡" speed={0.8} delay={1.8} />
-      <FloatingTechBadge position={[sidePosition * 0.72, 1.95, -0.4]} label="HTML/CSS" color="#ec4899" iconSymbol="🌐" speed={1.3} delay={2.6} />
-      <FloatingTechBadge position={[0, -1.75, 1]} label="ESP32 IoT" color="#a855f7" iconSymbol="📡" speed={0.7} delay={3.0} />
+      <FloatingTechBadge position={[-sidePosition, upperPosition - 0.35, 0.2]} label="Java 21" color="#f97316" iconSymbol="☕" speed={1.1} delay={0.2} />
+      <FloatingTechBadge position={[sidePosition, upperPosition - 0.4, 0.15]} label="React" color="#00f0ff" iconSymbol="⚛" speed={0.9} delay={1.4} />
+      <FloatingTechBadge position={[-sidePosition, lowerPosition, 0.3]} label="Spring" color="#22c55e" iconSymbol="🌱" speed={1.2} delay={2.1} />
+      <FloatingTechBadge position={[sidePosition, lowerPosition, 0.25]} label="MySQL" color="#38bdf8" iconSymbol="🐬" speed={1.0} delay={0.8} />
+      <FloatingTechBadge position={[-sidePosition * 0.72, upperPosition, -0.5]} label="JS / TS" color="#eab308" iconSymbol="⚡" speed={0.8} delay={1.8} />
+      <FloatingTechBadge position={[sidePosition * 0.72, upperPosition - 0.05, -0.4]} label="HTML/CSS" color="#ec4899" iconSymbol="🌐" speed={1.3} delay={2.6} />
+      <FloatingTechBadge position={[0, bottomPosition, 0.4]} label="ESP32 IoT" color="#a855f7" iconSymbol="📡" speed={0.7} delay={3.0} />
 
       <OrbitControls
         enableZoom={false}
